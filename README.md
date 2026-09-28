@@ -27,13 +27,13 @@ npx cypress open
 
 ## What is covered
 
-| File | Area |
-|---|---|
-| `01-authentication.cy.js` | Valid sign in, wrong password, unknown user, sign out then back button, basic authentication |
-| `02-data-tables.cy.js` | Alphabetical sorting, amount column sorted by value rather than as text, two decimal places on every amount, two tables holding the same rows |
-| `03-waiting.cy.js` | Elements hidden until loading finishes, elements that do not exist yet, controls that appear and disappear, a field enabled after a request, a slow page |
-| `04-inputs-and-dialogs.cy.js` | Number field boundaries, checkboxes, dropdown, alert, confirm dismissed, prompt, frames, a new window |
-| `05-broken-things.cy.js` | Images that actually load, status codes, redirects, a download with content, a file upload |
+| File                          | Area                                                                                                                                                     |
+| ----------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `01-authentication.cy.js`     | Valid sign in, wrong password, unknown user, sign out then back button, basic authentication                                                             |
+| `02-data-tables.cy.js`        | Alphabetical sorting, amount column sorted by value rather than as text, two decimal places on every amount, two tables holding the same rows            |
+| `03-waiting.cy.js`            | Elements hidden until loading finishes, elements that do not exist yet, controls that appear and disappear, a field enabled after a request, a slow page |
+| `04-inputs-and-dialogs.cy.js` | Number field boundaries, checkboxes, dropdown, alert, confirm dismissed, prompt, frames, a new window                                                    |
+| `05-broken-things.cy.js`      | Images that actually load, status codes, redirects, a download with content, a file upload                                                               |
 
 Twenty nine tests. Two are skipped and carry the defect id they belong to, each
 with a second test beside it that pins the present behaviour, so a fix turns into

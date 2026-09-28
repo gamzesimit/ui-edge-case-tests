@@ -11,34 +11,47 @@ describe('Sortable data tables', () => {
 
   it('sorts the last name column alphabetically', () => {
     cy.get('#table1 thead th').eq(LAST_NAME_COLUMN).click();
-    cy.get('#table1').columnValues(LAST_NAME_COLUMN).then((values) => {
-      expect(values).to.deep.equal([...values].sort((a, b) => a.localeCompare(b)));
-    });
+    cy.get('#table1')
+      .columnValues(LAST_NAME_COLUMN)
+      .then((values) => {
+        expect(values).to.deep.equal([...values].sort((a, b) => a.localeCompare(b)));
+      });
   });
 
   it('sorts the amount column by value, not as text', () => {
     cy.get('#table1 thead th').eq(DUE_COLUMN).click();
-    cy.get('#table1').columnValues(DUE_COLUMN).then((values) => {
-      const amounts = values.map((v) => Number(v.replace(/[^0-9.-]/g, '')));
-      expect(amounts, `column read as ${values.join(', ')}`)
-        .to.deep.equal([...amounts].sort((a, b) => a - b));
-    });
+    cy.get('#table1')
+      .columnValues(DUE_COLUMN)
+      .then((values) => {
+        const amounts = values.map((v) => Number(v.replace(/[^0-9.-]/g, '')));
+        expect(amounts, `column read as ${values.join(', ')}`).to.deep.equal(
+          [...amounts].sort((a, b) => a - b),
+        );
+      });
   });
 
   it('every amount is written with two decimal places', () => {
-    cy.get('#table1').columnValues(DUE_COLUMN).then((values) => {
-      values.forEach((value) => {
-        expect(value, 'a money cell must carry cents').to.match(/^\$\d+\.\d{2}$/);
+    cy.get('#table1')
+      .columnValues(DUE_COLUMN)
+      .then((values) => {
+        values.forEach((value) => {
+          expect(value, 'a money cell must carry cents').to.match(/^\$\d+\.\d{2}$/);
+        });
       });
-    });
   });
 
   it('the second table holds the same rows as the first', () => {
-    cy.get('#table1').columnValues(LAST_NAME_COLUMN).then((first) => {
-      cy.get('#table2').find('tbody tr').then(($rows) => {
-        const second = Cypress._.map($rows, (row) => row.cells[LAST_NAME_COLUMN].innerText.trim());
-        expect(second.sort()).to.deep.equal([...first].sort());
+    cy.get('#table1')
+      .columnValues(LAST_NAME_COLUMN)
+      .then((first) => {
+        cy.get('#table2')
+          .find('tbody tr')
+          .then(($rows) => {
+            const second = Cypress._.map($rows, (row) =>
+              row.cells[LAST_NAME_COLUMN].innerText.trim(),
+            );
+            expect(second.sort()).to.deep.equal([...first].sort());
+          });
       });
-    });
   });
 });

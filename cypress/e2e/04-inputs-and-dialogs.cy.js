@@ -50,8 +50,11 @@ describe('Inputs, dialogs and frames', () => {
 
   it('content inside a frame is reachable', () => {
     cy.visit('/iframe');
-    cy.get('#mce_0_ifr').its('0.contentDocument.body').should('not.be.empty')
-      .then(cy.wrap).should('contain.text', 'Your content goes here.');
+    cy.get('#mce_0_ifr')
+      .its('0.contentDocument.body')
+      .should('not.be.empty')
+      .then(cy.wrap)
+      .should('contain.text', 'Your content goes here.');
   });
 
   it('a new window is opened and its content is checked', () => {

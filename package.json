@@ -9,13 +9,17 @@
     "test": "cypress run",
     "open": "cypress open",
     "up": "docker compose up -d",
-    "down": "docker compose down"
+    "down": "docker compose down",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "keywords": [],
   "author": "",
   "license": "MIT",
   "description": "Cypress suite over the browser behaviour that breaks automated tests",
   "devDependencies": {
-    "cypress": "^15.21.1"
+    "cypress": "^15.21.1",
+    "eslint": "^10.11.0",
+    "prettier": "^3.9.9"
   }
 }
