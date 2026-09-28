@@ -1,0 +1,21 @@
+{
+  "name": "ui-edge-case-tests",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "cypress run",
+    "open": "cypress open",
+    "up": "docker compose up -d",
+    "down": "docker compose down"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "description": "Cypress suite over the browser behaviour that breaks automated tests",
+  "devDependencies": {
+    "cypress": "^15.21.1"
+  }
+}

@@ -1,0 +1,44 @@
+name: tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  cypress:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    services:
+      the-internet:
+        image: gprestes/the-internet:latest
+        ports:
+          - 7080:5000
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - name: Wait for the application
+        run: |
+          for i in $(seq 1 30); do
+            code=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:7080/ || true)
+            if [ "$code" = "200" ]; then echo "ready"; exit 0; fi
+            sleep 5
+          done
+          echo "the application did not become ready"; exit 1
+      - uses: cypress-io/github-action@v6
+        with:
+          install: false
+          browser: chrome
+        env:
+          BASE_URL: http://localhost:7080
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: cypress-screenshots
+          path: cypress/screenshots/
+          retention-days: 14
