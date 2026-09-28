@@ -3,4 +3,4 @@ services:
     image: gprestes/the-internet:latest
     container_name: the-internet
     ports:
-      - "7080:5000"
+      - '7080:5000'

@@ -28,11 +28,15 @@ describe('Form authentication', () => {
     cy.request({
       url: '/basic_auth',
       failOnStatusCode: false,
-    }).its('status').should('eq', 401);
+    })
+      .its('status')
+      .should('eq', 401);
 
     cy.request({
       url: '/basic_auth',
       auth: { user: 'admin', pass: 'admin' },
-    }).its('status').should('eq', 200);
+    })
+      .its('status')
+      .should('eq', 200);
   });
 });

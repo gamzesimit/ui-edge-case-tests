@@ -34,8 +34,10 @@ describe('Content that arrives late', () => {
   it('reports a slow page without a fixed pause', () => {
     const started = Date.now();
     cy.visit('/slow', { timeout: 30000 });
-    cy.get('body').should('be.visible').then(() => {
-      cy.log(`the slow page answered in ${Date.now() - started} ms`);
-    });
+    cy.get('body')
+      .should('be.visible')
+      .then(() => {
+        cy.log(`the slow page answered in ${Date.now() - started} ms`);
+      });
   });
 });

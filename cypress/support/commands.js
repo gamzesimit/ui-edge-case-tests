@@ -8,11 +8,10 @@ Cypress.Commands.add('signIn', (username, password) => {
 
 /** Read a column of a table as text, trimmed. */
 Cypress.Commands.add('columnValues', { prevSubject: 'element' }, (table, columnIndex) => {
-  return cy.wrap(table)
+  return cy
+    .wrap(table)
     .find('tbody tr')
-    .then(($rows) =>
-      Cypress._.map($rows, (row) => row.cells[columnIndex].innerText.trim())
-    );
+    .then(($rows) => Cypress._.map($rows, (row) => row.cells[columnIndex].innerText.trim()));
 });
 
 /** Turn a money string such as "$50.00" into a number. */

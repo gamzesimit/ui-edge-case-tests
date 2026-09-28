@@ -16,6 +16,7 @@ reports green against a page with two broken images is not a suite.
 **Status:** Reproducible on every attempt
 
 **Steps**
+
 1. Open the JavaScript alerts page.
 2. Press "Click for JS Alert" and accept the dialog.
 
@@ -45,6 +46,7 @@ wording so a fix shows up.
 **Status:** Reproducible on every attempt
 
 **Steps**
+
 1. Open the broken images page.
 2. Request the source of each image.
 

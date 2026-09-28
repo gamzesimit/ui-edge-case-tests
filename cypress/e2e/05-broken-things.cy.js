@@ -17,13 +17,16 @@ describe('Things that look fine and are not', () => {
   it('the broken images are counted, pinning UI-002', () => {
     cy.visit('/broken_images');
     const statuses = [];
-    cy.get('#content img').each(($img) => {
-      cy.request({ url: $img.prop('src'), failOnStatusCode: false })
-        .then((response) => statuses.push(response.status));
-    }).then(() => {
-      const broken = statuses.filter((code) => code !== 200).length;
-      expect(broken, `image statuses: ${statuses.join(', ')}`).to.eq(2);
-    });
+    cy.get('#content img')
+      .each(($img) => {
+        cy.request({ url: $img.prop('src'), failOnStatusCode: false }).then((response) =>
+          statuses.push(response.status),
+        );
+      })
+      .then(() => {
+        const broken = statuses.filter((code) => code !== 200).length;
+        expect(broken, `image statuses: ${statuses.join(', ')}`).to.eq(2);
+      });
   });
 
   it('a link that promises a status code returns it', () => {
