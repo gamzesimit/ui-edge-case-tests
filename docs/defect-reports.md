@@ -69,6 +69,35 @@ number at two.
 
 ---
 
+---
+
+## UI-003 - The profile link behind a hover caption does not resolve
+
+**Severity:** Medium
+**Page:** `/hovers`
+**Status:** Reproducible on every attempt
+
+**Steps**
+1. Open the hovers page.
+2. Read the href of the link inside each caption.
+3. Request each one.
+
+**Result**
+Every link points at `/users/{n}` and every one of them answers 404. The caption
+offers a profile that does not exist.
+
+**Expected**
+The link resolves, or the caption does not offer it.
+
+**Impact**
+A link that looks like part of the product and leads nowhere. It is the kind of
+fault a test suite misses by design: the element is present, it has an href, and
+every assertion about the markup passes. Only requesting the target finds it.
+
+**Covered by** `cypress/e2e/06-forms-and-state.cy.js`. The strict check is
+skipped and carries this defect id; a second test requests every link and pins
+the number that fail.
+
 ## Rules that hold
 
 - Sign in accepts a valid user, refuses a wrong password and an unknown user,
