@@ -78,6 +78,7 @@ number at two.
 **Status:** Reproducible on every attempt
 
 **Steps**
+
 1. Open the hovers page.
 2. Read the href of the link inside each caption.
 3. Request each one.
