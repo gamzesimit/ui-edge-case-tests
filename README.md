@@ -34,9 +34,9 @@ npx cypress open
 | `03-waiting.cy.js`            | Elements hidden until loading finishes, elements that do not exist yet, controls that appear and disappear, a field enabled after a request, a slow page |
 | `04-inputs-and-dialogs.cy.js` | Number field boundaries, checkboxes, dropdown, alert, confirm dismissed, prompt, frames, a new window                                                    |
 | `05-broken-things.cy.js`      | Images that actually load, status codes, redirects, a download with content, a file upload                                                               |
-| `06-forms-and-state.cy.js`    | Key presses, a slider value, a hover caption link, shifting content, elements that appear and disappear |
-| `07-storage.cy.js`            | Local and session storage, basic authentication not leaking content, a redirect chain ending on 200 |
-| `08-responsive.cy.js`         | Sign in usable and no sideways scroll at phone, tablet and desktop widths, a table readable on a phone |
+| `06-forms-and-state.cy.js`    | Key presses, a slider value, a hover caption link, shifting content, elements that appear and disappear                                                  |
+| `07-storage.cy.js`            | Local and session storage, basic authentication not leaking content, a redirect chain ending on 200                                                      |
+| `08-responsive.cy.js`         | Sign in usable and no sideways scroll at phone, tablet and desktop widths, a table readable on a phone                                                   |
 
 Forty six tests. Three are skipped and carry the defect id they belong to, each
 with a second test beside it that pins the present behaviour, so a fix turns into
