@@ -6,8 +6,8 @@ A Cypress suite over the browser behaviour that breaks automated tests: content
 that arrives late, alerts, frames, new windows, file upload and download, tables
 that claim to sort, and images that look present and are not.
 
-Two defects reported: a misspelled confirmation message and two images on a page
-that do not resolve.
+Three defects reported: a misspelled confirmation message, two images on a page
+that do not resolve, and a profile link behind a hover caption that goes nowhere.
 
 Reports: [docs/defect-reports.md](docs/defect-reports.md)
 
@@ -34,8 +34,11 @@ npx cypress open
 | `03-waiting.cy.js`            | Elements hidden until loading finishes, elements that do not exist yet, controls that appear and disappear, a field enabled after a request, a slow page |
 | `04-inputs-and-dialogs.cy.js` | Number field boundaries, checkboxes, dropdown, alert, confirm dismissed, prompt, frames, a new window                                                    |
 | `05-broken-things.cy.js`      | Images that actually load, status codes, redirects, a download with content, a file upload                                                               |
+| `06-forms-and-state.cy.js`    | Key presses, a slider value, a hover caption link, shifting content, elements that appear and disappear |
+| `07-storage.cy.js`            | Local and session storage, basic authentication not leaking content, a redirect chain ending on 200 |
+| `08-responsive.cy.js`         | Sign in usable and no sideways scroll at phone, tablet and desktop widths, a table readable on a phone |
 
-Twenty nine tests. Two are skipped and carry the defect id they belong to, each
+Forty six tests. Three are skipped and carry the defect id they belong to, each
 with a second test beside it that pins the present behaviour, so a fix turns into
 a failing test rather than passing unnoticed.
 
